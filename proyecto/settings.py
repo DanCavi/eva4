@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'proyecto.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default = 'postgres://eva4:mNZj8ZvLwFbQ57wGTa81ywOmcmXt8InA@dpg-clocejip0o1s73f82h80-a/db_eva4',
+        default = 'sqlite:///db.sqlite3',
         conn_max_age = 600
     )
 }
