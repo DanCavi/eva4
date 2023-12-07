@@ -1,13 +1,39 @@
-<h1>portfolio</h1>
+{% extends "layout.html" %}
+{% block content %}
+{% load static %}
 
-{% for proyecto in proyectos %}
+<header class="row bg-black">
+    <div class="col-md-4">
+        <img src="{% static 'portfolio/profile.jpeg' %}" alt="Profile">
+    </div>
 
-<h2>{{proyecto.title}}</h2>
-<p>{{proyecto.description}}</p>
-<img src="{{proyecto.image.url}}" height="100" alt="alt">
+    <div class="col-md-8 my-auto p-4">
+        <h1>Hola, soy <strong>Dante Cavieres</strong></h1>
+        <h3>Soy desarrollador fullstack</h3>
+        <p>No estoy muy seguro de que poner aquí, pero ya estará mejor daskjdak</p>
+        <a href="{% static 'portfolio/cv.pdf' %}" class="btn btn-primary btn-lg rounded-0 my-3">Descarga mi curriculum OWO</a>
+    </div>
+</header>
 
-{% if proyecto.url %}
-  <a href="{{proyecto.url}}">Link</a>
-{% endif %}
-  
-{% endfor %}
+<div class="row my-4 text-center">
+    <h3>Mis proyectos</h3>
+    <p>Estos son algunos de mis proyectos</p>
+
+    {% for proyecto in proyectos %}
+    <div class="col-md-4 p-4">
+        <div class="card bg-black card-project">
+            <img src="{{proyecto.image.url}}" alt="" class="card-img-top">
+            <div class="card-body">
+                <h2>{{proyecto.title}}</h2>
+                <p>{{proyecto.description}}</p>
+
+                {% if proyecto.url %}
+                <a href="{{proyecto.url}}" class="btn btn-light rounded-0 btn-sm" target="_blank" rel="noreferrer">Visita el sitio del Proyecto</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
